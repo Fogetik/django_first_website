@@ -1,8 +1,32 @@
 {% extends 'main/base.html' %}
 {%block title%}
-    Главная
+{{ title }}
 {%endblock%}
 
 {%block content%}
-    Хуй
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+    <h1>Главная страница</h1>
+    {% if blogs %}
+        {% for i in blogs %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ i.title }}</h3>
+                <p>{{ i.text_blog }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Пусто</p>
+    {% endif %}
+
 {%endblock%}
