@@ -28,6 +28,18 @@ def create(request):
     }
     return render(request, 'main/create.html', context)
 
+def editid(request, idi):
+    try:
+        blog = Blog.objects.get(id=idi)
+        if (request.method == "POST"):
+            blog.title = request.POST.get('title')
+            blog.text_blog = request.POST.get('text_blog')
+            blog.save()
+            return redirect('home')
+        else:
+            return render(request, 'main/edit.html', {"blog":blog})
+    except:
+        return HttpResponseNotFound('<h2>Блог не найден</h2>')
 
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Нет такой страницы</h1>')

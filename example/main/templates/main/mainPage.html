@@ -23,6 +23,7 @@ MathJax = {
             <div class="alert alert-warning mt-2">
                 <h3>{{ i.title }}</h3>
                 <p>{{ i.text_blog }}</p>
+                <button onclick='location.href="edit/{{i.id}}"' type="submit" class="btn btn-success">Изменить</button>
             </div>
         {% endfor %}
     {% else %}
