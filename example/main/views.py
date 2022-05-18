@@ -1,3 +1,4 @@
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from .forms import BlogForm
 from .models import Blog
@@ -27,3 +28,6 @@ def create(request):
     }
     return render(request, 'main/create.html', context)
 
+
+def pageNotFound(request, exception):
+    return HttpResponseNotFound('<h1>Нет такой страницы</h1>')
